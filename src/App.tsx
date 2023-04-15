@@ -3,6 +3,22 @@ import styled from "styled-components";
 import Card from "./components/Card";
 import GlobalStyle from "./style/Globalstyle";
 
+function App() {
+  return (
+    <Background>
+      <GlobalStyle />
+      <Card />
+      <Footer>
+        Challenge by{" "}
+        <Link href="https://www.frontendmentor.io/home">Front-end Mentor</Link>.
+        Coded by <Link href="http://geoffreyhach.fr">Geoffrey Hach</Link>.
+      </Footer>
+    </Background>
+  );
+}
+
+export default App;
+
 const Background = styled.main`
   // position: relative
   display: flex;
@@ -36,19 +52,3 @@ const Link = styled.a`
     text-decoration: underline;
   }
 `;
-
-function App() {
-  return (
-    <Background>
-      <GlobalStyle />
-      <Card />
-      <Footer>
-        Challenge by{" "}
-        <Link href="https://www.frontendmentor.io/home">Front-end Mentor</Link>.
-        Coded by <Link href="http://geoffreyhach.fr">Geoffrey Hach</Link>.
-      </Footer>
-    </Background>
-  );
-}
-
-export default App;

@@ -110,7 +110,7 @@ Error generating stack: `+o.message+`
   font-size: 0.8rem;
   color: white;
   background-color: hsl(0, 100%, 67%);
-`,y_=(e,t)=>{const n=e.getTime()-t.getTime(),r=Math.ceil(n/(1e3*3600*24));return{year:Math.floor(r/365),month:Math.floor(r%365/30),day:Math.floor(r%365%30)}},v_=Bo.object({day:Bo.number().min(1,"Day must be between 1 and 12").max(31,"Day must be between 1 and 12").optional(),month:Bo.number().min(1,"Month must be between 1 and 12").max(12,"Month must be between 1 and 12").optional(),year:Bo.number().min(100,"Year must be between 100 and 2023").max(2023,"Year must be between 100 and 2023").optional()}),np={day:0,month:0,year:0};function g_(e){const[t,n]=b.useState(null),[r,i]=b.useState(np),[o,s]=b.useState(!1),l=xa({val:r.year,from:{val:0}}),a=xa({val:r.month,from:{val:0}}),u=xa({val:r.day,from:{val:0}});return b.useEffect(()=>{t&&i(y_(new Date,t)),t===null&&i(d=>np)},[t]),gt(w_,{children:[fe(f_,{setDate:n,setIsDirty:s}),fe(__,{children:fe(S_,{children:fe("svg",{xmlns:"http://www.w3.org/2000/svg",width:"46",height:"44",viewBox:"0 0 46 44",children:fe("g",{fill:"none",stroke:"#FFF",strokeWidth:"2",children:fe("path",{d:"M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"})})})})}),gt(k_,{children:[gt(Oa,{children:[fe("span",{children:o?fe(Pa.span,{children:l.val.to(d=>Math.floor(d))}):"--"}),"years"]}),gt(Oa,{children:[fe("span",{children:o?fe(Pa.span,{children:a.val.to(d=>Math.floor(d))}):"--"}),"months"]}),gt(Oa,{children:[fe("span",{children:o?fe(Pa.span,{children:u.val.to(d=>Math.floor(d))}):"--"}),"days"]})]})]})}const w_=st.div`
+`,y_=(e,t)=>{const n=e.getTime()-t.getTime(),r=Math.ceil(n/(1e3*3600*24));return{year:Math.floor(r/365),month:Math.floor(r%365/30),day:Math.floor(r%365%30)}},v_=Bo.object({day:Bo.number().min(1,"Day must be between 1 and 12").max(31,"Day must be between 1 and 12").optional(),month:Bo.number().min(1,"Month must be between 1 and 12").max(12,"Month must be between 1 and 12").optional(),year:Bo.number().min(100,"Year must be between 100 and 2023").max(2023,"Year must be between 100 and 2023").optional()}),np={day:0,month:0,year:0};function g_(){const[e,t]=b.useState(null),[n,r]=b.useState(np),[i,o]=b.useState(!1),s=xa({val:n.year,from:{val:0}}),l=xa({val:n.month,from:{val:0}}),a=xa({val:n.day,from:{val:0}});return b.useEffect(()=>{e&&r(y_(new Date,e)),e===null&&r(u=>np)},[e]),gt(w_,{children:[fe(f_,{setDate:t,setIsDirty:o}),fe(__,{children:fe(S_,{children:fe("svg",{xmlns:"http://www.w3.org/2000/svg",width:"46",height:"44",viewBox:"0 0 46 44",children:fe("g",{fill:"none",stroke:"#FFF",strokeWidth:"2",children:fe("path",{d:"M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"})})})})}),gt(k_,{children:[gt(Oa,{children:[fe("span",{children:i?fe(Pa.span,{children:s.val.to(u=>Math.floor(u))}):"--"}),"years"]}),gt(Oa,{children:[fe("span",{children:i?fe(Pa.span,{children:l.val.to(u=>Math.floor(u))}):"--"}),"months"]}),gt(Oa,{children:[fe("span",{children:i?fe(Pa.span,{children:a.val.to(u=>Math.floor(u))}):"--"}),"days"]})]})]})}const w_=st.div`
   position: relative;
   display: grid;
   grid-template-rows: 1fr 3rem 2fr;
@@ -220,7 +220,7 @@ Error generating stack: `+o.message+`
     font-style: italic;
     font-display: auto;
     } 
-`,O_=st.main`
+`;function O_(){return gt(I_,{children:[fe(N_,{}),fe(g_,{}),gt(R_,{children:["Challenge by"," ",fe(rp,{href:"https://www.frontendmentor.io/home",children:"Front-end Mentor"}),". Coded by ",fe(rp,{href:"http://geoffreyhach.fr",children:"Geoffrey Hach"}),"."]})]})}const I_=st.main`
   // position: relative
   display: flex;
   justify-content: center;
@@ -229,7 +229,7 @@ Error generating stack: `+o.message+`
   height: 100vh;
   padding: 0.5rem;
   background-color: lightblue;
-`,I_=st.footer`
+`,R_=st.footer`
   position: absolute;
   bottom: 0.5rem;
   left: 50%;
@@ -248,4 +248,4 @@ Error generating stack: `+o.message+`
   :hover {
     text-decoration: underline;
   }
-`;function R_(){return gt(O_,{children:[fe(N_,{}),fe(g_,{}),gt(I_,{children:["Challenge by"," ",fe(rp,{href:"https://www.frontendmentor.io/home",children:"Front-end Mentor"}),". Coded by ",fe(rp,{href:"http://geoffreyhach.fr",children:"Geoffrey Hach"}),"."]})]})}Ia.createRoot(document.getElementById("root")).render(fe(Hr.StrictMode,{children:fe(R_,{})}));
+`;Ia.createRoot(document.getElementById("root")).render(fe(Hr.StrictMode,{children:fe(O_,{})}));

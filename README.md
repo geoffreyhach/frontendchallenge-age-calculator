@@ -43,8 +43,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/geoffreyhach/frontendchallenge-age-calculator)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Repo github](https://github.com/geoffreyhach/frontendchallenge-age-calculator)
+- Live Site URL: [ URL](https://geoffreyhach.github.io/frontendchallenge-age-calculator/)
 
 ## My process
 

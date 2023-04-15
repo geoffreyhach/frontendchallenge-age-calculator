@@ -6,8 +6,6 @@ import { useSpring, animated } from "react-spring";
 import Form from "./Form";
 import { calculateTimeBeetweenDates } from "../services/utils";
 
-export interface ICardProps {}
-
 export const dateSchema = z.object({
   day: z
     .number()
@@ -30,7 +28,7 @@ export type IDate = z.infer<typeof dateSchema>;
 
 export const initialResultState = { day: 0, month: 0, year: 0 };
 
-export default function Card(props: ICardProps) {
+export default function Card() {
   const [date, setDate] = useState<Date | null>(null);
   const [results, setResults] = useState<IDate>(initialResultState);
   const [isDirty, setIsDirty] = useState<Boolean>(false);

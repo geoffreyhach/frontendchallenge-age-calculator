@@ -15,7 +15,6 @@ export default function Form({ setDate, setIsDirty }: IFormProps) {
 
   useEffect(() => {
     const result = dateSchema.safeParse(input);
-
     if (!result.success) {
       setErrors(result.error.issues);
       setDate(null);
