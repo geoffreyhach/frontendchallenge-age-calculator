@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { IDate, dateSchema } from "./Card";
+import { ZodError, ZodIssue } from "zod";
 
 export interface IFormProps {
   setDate: Function;
@@ -10,8 +11,10 @@ export interface IFormProps {
 const initialInputState = { day: undefined, month: undefined, year: undefined };
 
 export default function Form({ setDate, setIsDirty }: IFormProps) {
-  const [errors, setErrors] = useState<any>([]);
+  const [errors, setErrors] = useState<ZodIssue[]>([]);
   const [input, setInput] = useState<IDate>(initialInputState);
+
+  console.log(errors);
 
   useEffect(() => {
     const result = dateSchema.safeParse(input);
@@ -34,7 +37,7 @@ export default function Form({ setDate, setIsDirty }: IFormProps) {
 
   const isNotValid = (name: string) => {
     return (
-      errors.filter((error: any) => error.path.includes(name)).length !== 0
+      errors.filter((error: ZodIssue) => error.path.includes(name)).length !== 0
     );
   };
 
@@ -86,7 +89,7 @@ export default function Form({ setDate, setIsDirty }: IFormProps) {
       </FormContainer>
       <ErrorsWrapper>
         {errors.length > 0 &&
-          errors.map((error: any, index: string) => (
+          errors.map((error: ZodIssue, index: number) => (
             <ErrorMessage key={index}>{error.message}</ErrorMessage>
           ))}
       </ErrorsWrapper>
