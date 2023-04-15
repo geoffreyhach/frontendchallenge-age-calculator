@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { z } from "zod";
-
 import styled from "styled-components";
+import { z } from "zod";
+import { useSpring, animated } from "react-spring";
+
 import Form from "./Form";
 import { calculateTimeBeetweenDates } from "../services/utils";
 
@@ -34,7 +35,9 @@ export default function Card(props: ICardProps) {
   const [results, setResults] = useState<IDate>(initialResultState);
   const [isDirty, setIsDirty] = useState<Boolean>(false);
 
-  console.log(date);
+  const yearSpring = useSpring({ val: results.year, from: { val: 0 } });
+  const monthSpring = useSpring({ val: results.month, from: { val: 0 } });
+  const daySpring = useSpring({ val: results.day, from: { val: 0 } });
 
   useEffect(() => {
     if (date) setResults(calculateTimeBeetweenDates(new Date(), date));
@@ -60,13 +63,40 @@ export default function Card(props: ICardProps) {
       </Divider>
       <ResultContainer>
         <ResultText>
-          <span>{isDirty ? results.year : "--"}</span>years
+          <span>
+            {isDirty ? (
+              <animated.span>
+                {yearSpring.val.to((val) => Math.floor(val))}
+              </animated.span>
+            ) : (
+              "--"
+            )}
+          </span>
+          years
         </ResultText>
         <ResultText>
-          <span>{isDirty ? results.month : "--"}</span>months
+          <span>
+            {isDirty ? (
+              <animated.span>
+                {monthSpring.val.to((val) => Math.floor(val))}
+              </animated.span>
+            ) : (
+              "--"
+            )}
+          </span>
+          months
         </ResultText>
         <ResultText>
-          <span>{isDirty ? results.day : "--"}</span>days
+          <span>
+            {isDirty ? (
+              <animated.span>
+                {daySpring.val.to((val) => Math.floor(val))}
+              </animated.span>
+            ) : (
+              "--"
+            )}
+          </span>
+          days
         </ResultText>
       </ResultContainer>
     </Container>
@@ -82,11 +112,18 @@ const Container = styled.div`
     "divider divider"
     "result .";
   background-color: white;
-  width: 400px;
+  width: 450px;
   height: 350px;
   padding: 2rem;
   border-radius: 15px 15px 100px 15px;
   align-items: center;
+  @media (max-width: 450px) {
+    grid-template-areas:
+      "form"
+      "divider "
+      "result ";
+  }
+  gap: 1rem;
 `;
 
 const Divider = styled.div`
@@ -123,4 +160,17 @@ const IconContainer = styled.div`
   border-radius: 50%;
   padding: 1rem;
   transform: scale(0.6) translate(33%, -80%);
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+  :hover {
+    transform: scale(0.65) translate(33%, -75%);
+    opacity: 0.8;
+  }
+  @media (max-width: 450px) {
+    right: 50%;
+    transform: scale(0.6) translate(50%, -80%);
+    :hover {
+      transform: scale(0.65) translate(50%, -75%);
+      opacity: 0.8;
+    }
+  }
 `;

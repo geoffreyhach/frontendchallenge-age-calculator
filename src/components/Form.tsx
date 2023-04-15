@@ -17,14 +17,13 @@ export default function Form({ setDate, setIsDirty }: IFormProps) {
     const result = dateSchema.safeParse(input);
 
     if (!result.success) {
-      console.log("fired");
       setErrors(result.error.issues);
       setDate(null);
       setIsDirty(false);
     } else setErrors([]);
 
     if (result.success && input.day && input.month && input.year) {
-      setDate(new Date(`${input.day}-${input.month}-${input.year}`));
+      setDate(new Date(`${input.month}-${input.day}-${input.year}`));
       setIsDirty(true);
     }
   }, [input]);
@@ -106,6 +105,9 @@ const FormContainer = styled.form.attrs((props) => ({
   .error {
     outline: 1px solid hsl(0, 100%, 67%);
   }
+  .error:focus {
+    outline: 1px solid hsl(0, 100%, 67%);
+  }
 `;
 
 const FlexRows = styled.div`
@@ -120,11 +122,12 @@ const Label = styled.label`
   color: hsl(0, 1%, 44%);
   letter-spacing: 0.1rem;
   font-family: "Poppins Regular";
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   font-weight: 700;
 `;
 
 const Input = styled.input`
+  min-width: 5rem;
   max-width: 6rem;
   padding: 0.5rem 1rem;
   outline: 0.3px solid hsl(0, 0%, 86%);
@@ -132,6 +135,7 @@ const Input = styled.input`
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 700;
+  color: hsl(0, 1%, 44%);
   ::placeholder {
     color: hsl(0, 1%, 44%);
     font-weight: 900;
